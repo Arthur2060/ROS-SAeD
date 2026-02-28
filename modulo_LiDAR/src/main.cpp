@@ -1,5 +1,5 @@
-#include <Adafruit_MPU6050.h>
-#include <Adafruit_Sensor.h>
+#include "robot_hardware_drivers/src/Adafruit_MPU6050.h"
+#include "robot_hardware_drivers/src/Adafruit_Sensor.h"
 #include <cmath>
 #include <vector>
 #include <Wire.h>
