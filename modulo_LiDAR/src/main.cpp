@@ -1,8 +1,8 @@
-#include "robot_hardware_drivers/src/Adafruit_MPU6050.h"
-#include "robot_hardware_drivers/src/Adafruit_Sensor.h"
+#include "Adafruit_MPU6050.h"
+#include "Adafruit_Sensor.h"
+#include <Wire.h>
 #include <cmath>
 #include <vector>
-#include <Wire.h>
 
 Adafruit_MPU6050 mpu;
 sensors_event_t a, g, temp;
