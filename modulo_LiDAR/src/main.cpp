@@ -1,12 +1,10 @@
-#include "Adafruit_MPU6050.h"
-#include "Adafruit_Sensor.h"
+#include <mpu6050.h>
 #include <Wire.h>
 #include <cmath>
 #include <vector>
 
-Adafruit_MPU6050 mpu;
-sensors_event_t a, g, temp;
-
+const int TAMANHO_MAPA_VERTICAL = 26;
+const int TAMANHO_MAPA_HORIZONTAL = 26;
 const float DISTANCIA_MEDIDA = 4.0;
 const float DIMENSAO_DE_QUADRO = 1.0;
 
@@ -17,14 +15,57 @@ std::vector<int> calcularCelula(float distanciaX, float distanciaY);
 void configurarAcelerometro();
 void configurarGyroscopio();
 void configurarTermometro();
+void configurarSerial();
+void configurarMPU();
+void calcularPontos();
 
-bool tabuleiro[26][26] = {}
+bool tabuleiro[TAMANHO_MAPA_VERTICAL][TAMANHO_MAPA_HORIZONTAL] = {};
 
 void setup(void) {
+
+  configurarAcelerometro();
+  configurarGyroscopio();
+  configurarTermometro();
+  configurarSerial();
+  configurarMPU();
+  
+  Serial.println("");
+  delay(100);
+}
+
+void loop() {
+  calcularPontos();
+  delay(1000);
+}
+
+float calcularDistanciaY() {
+  return sin(getAngleZ()) * DISTANCIA_MEDIDA;
+}
+
+std::vector<float> std::vector<int> calcularDistanciaX() {
+    const float DISTANCIA_X = calcularDistanciaY()
+
+    float cateto_adjacente = pow(DISTANCIA_X, 2);
+    float cateto_oposto = pow(DISTANCIA_MEDIDA, 2) - pow(DISTANCIA_X, 2);
+    return {sqrt(cateto_oposto), DISTANCIA_X};
+}
+
+std::vector<int> calcularCelula()
+{
+  const std::vector<float> DISTANCIAS = calcularDistanciaX();
+
+  int X = DISTANCIAS[0] / DIMENSAO_DE_QUADRO;
+  int Y = DISTANCIAS[1] / DIMENSAO_DE_QUADRO;
+  
+  return {Y, X};
+}
+
+void configurarSerial() {
   Serial.begin(115200);
   while (!Serial)
     delay(10);
-
+}
+void configurarMPU() {
   Serial.println("Adafruit MPU6050 teste!");
 
   if (!mpu.begin()) {
@@ -34,68 +75,6 @@ void setup(void) {
     }
   }
   Serial.println("MPU6050 pronto!");
-
-  configurarAcelerometro();
-  configurarGyroscopio();
-  configurarTermometro();
-  
-  Serial.println("");
-  delay(100);
-}
-
-void loop() {
-  mpu.getEvent(&a, &g, &temp);
-
-  float angulo = a.acceleration.y * 10;
-
-  float distanciaX = calcularDistanciaX(angulo);
-  float distanciaY = calcularDistanciaY(distanciaX);
-
-  int TAMANHO_MAPA_VERTICAL = 26;
-  int TAMANHO_MAPA_HORIZONTAL = 26;
-  
-  for (int linha = 0 ; linha <= TAMANHO_MAPA_VERTICAL ; linha++) {
-    for (int coluna = 0 ; coluna <= TAMANHO_MAPA_HORIZONTAL ; coluna++) {
-      int coordenadas[] = {coluna, linha};
-      if (calcularCelula(coluna, linha)[0] == coordenadas[0] &&
-          calcularCelula(coluna, linha)[1] == coordenadas[1]
-        ) {
-        tabuleiro[linha][coluna] = false;
-      } else {
-        tabuleiro[linha][coluna] = true;
-      }
-    }
-  }
-
-  for (int linha = 0 ; linha <= TAMANHO_MAPA_VERTICAL ; linha++) {
-    for (int coluna = 0 ; coluna <= TAMANHO_MAPA_HORIZONTAL ; coluna++) {
-      if (tabuleiro[linha][coluna]) {
-        Serial.print("[ ]");
-      } else {
-        Serial.print("[X]");
-      }
-      Serial.println("");
-    }
-  }
-  delay(1000);
-}
-
-float calcularDistanciaY(float angulo) {
-  return sin(angulo) * DISTANCIA_MEDIDA;
-}
-
-float calcularDistanciaX(float distanciaX) {
-  float cateto_adjacente = pow(distanciaX, 2);
-float cateto_oposto = pow(DISTANCIA_MEDIDA, 2) - pow(distanciaX, 2);
-return sqrt(cateto_oposto);
-}
-
-std::vector<int> calcularCelula(float distanciaX, float distanciaY)
-{
-  int X = distanciaX / DIMENSAO_DE_QUADRO;
-  int Y = distanciaY / DIMENSAO_DE_QUADRO;
-  
-  return {Y, X};
 }
 
 void configurarAcelerometro() {
@@ -161,5 +140,31 @@ void configurarTermometro() {
   case MPU6050_BAND_5_HZ:
     Serial.println("5 Hz");
     break;
+  }
+}
+
+void calcularPontos(){
+  for (int linha = 0 ; linha <= TAMANHO_MAPA_VERTICAL ; linha++) {
+    for (int coluna = 0 ; coluna <= TAMANHO_MAPA_HORIZONTAL ; coluna++) {
+      int coordenadas[] = {coluna, linha};
+      if (calcularCelula(coluna, linha)[0] == coordenadas[0] &&
+          calcularCelula(coluna, linha)[1] == coordenadas[1]
+        ) {
+        tabuleiro[linha][coluna] = false;
+      } else {
+        tabuleiro[linha][coluna] = true;
+      }
+    }
+  }
+
+  for (int linha = 0 ; linha <= TAMANHO_MAPA_VERTICAL ; linha++) {
+    for (int coluna = 0 ; coluna <= TAMANHO_MAPA_HORIZONTAL ; coluna++) {
+      if (tabuleiro[linha][coluna]) {
+        Serial.print("[ ]");
+      } else {
+        Serial.print("[X]");
+      }
+      Serial.println("");
+    }
   }
 }
