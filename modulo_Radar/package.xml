@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>modulo_LiDAR</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <name>modulo_radar</name>
+  <version>0.0.1</version>
+  <description>Determina a localização de obstaculos com base nas informações postadas no tópico radar</description>
   <maintainer email="arthurhenrrique1705gmail.com">arthur</maintainer>
-  <license>TODO: License declaration</license>
+  <license></license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
