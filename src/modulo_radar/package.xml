@@ -5,7 +5,7 @@
   <version>0.0.1</version>
   <description>Determina a localização de obstaculos com base nas informações postadas no tópico radar</description>
   <maintainer email="arthurhenrrique1705gmail.com">arthur</maintainer>
-  <license></license>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
