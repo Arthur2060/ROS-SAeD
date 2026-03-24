@@ -1,7 +1,7 @@
 #include <memory>
 #include "rclcpp/rclcpp.hpp"		// Importa biblioteca ROS 2
-#include "std_msgs/msg/string.hpp" 
-#include <cmath>             		// Importa biblioteca para cálculos complexos em C++
+#include "std_msgs/msg/string.hpp"	// Importa modelo padrão de mensagem em tópico, tenho que fazer o meu modelo depois
+#include <cmath>             		// Importa biblioteca para cálculos trigonométricos em C++
 #include <stdio.h>           		// Importa bibliotca para uso de printf
 #include <sstream>
 
@@ -22,7 +22,6 @@ float anguloEmRadi();   // Calcula o equivalente em radianos do angulo em graus
 
 // Nota:
 // Depois eu faço a informação vir em radianos para poupar trabalho
-//
 
 // Criacao da entidade para increver no topico radar
 class BatalhaNavalSubscriber : public rclcpp::Node
@@ -47,8 +46,8 @@ public:
 		getline(infos, anguloRecebido, '\n');		// Coleta os dados linha a linha
 		getline(infos, distanciaRecebido, '\n');	// Coleta os dados linha a linha
 
-		angulo = std::stoi(anguloRecebido);					// Transfere as informações para as respectivas variaveis
-		distancia = std::stod(distanciaRecebido);				// Transfere as informações para as respectivas variaveis
+		angulo = std::stoi(anguloRecebido);			// Transfere as informações para as respectivas variaveis
+		distancia = std::stod(distanciaRecebido);	// Transfere as informações para as respectivas variaveis
 
 		double x = calcularX();
 		double y = calcularY();
