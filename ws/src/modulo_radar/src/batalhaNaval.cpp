@@ -37,7 +37,6 @@ public:
 	// Funcao para ouvir a mensagem e armazenar as infos nas variaveis
     auto topic_callback =
       [this](std_msgs::msg::String::UniquePtr msg) -> void {
-        RCLCPP_INFO(this->get_logger(), "Eu ouvi: '%s'", msg->data.c_str());
 		std::stringstream infos(msg->data); // Armazena a mensagem em uma String
 
 		std::string anguloRecebido;					

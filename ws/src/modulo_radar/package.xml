@@ -4,10 +4,22 @@
   <name>modulo_radar</name>
   <version>0.0.1</version>
   <description>Determina a localização de obstaculos com base nas informações postadas no tópico radar</description>
-  <maintainer email="arthurhenrrique1705gmail.com">arthur</maintainer>
+  <maintainer email="arthurhenrrique1705@gmail.com">arthur</maintainer>
   <license>Apache-2.0</license>
 
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
+  
+  <build_depend>rosidl_default_generators</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <exec_depend>rosidl_runtime_py</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
