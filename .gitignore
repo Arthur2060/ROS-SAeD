@@ -1,0 +1,11 @@
+# Excluindo configuracao do VSCode
+/.vscode
+
+# Excluindo pastas criadas pelo colcon
+/src/build
+/src/install
+/src/log
+
+/src/*/build
+/src/*/install
+/src/*/log
