@@ -2,6 +2,10 @@
 /.vscode
 
 # Excluindo pastas criadas pelo colcon
+/build
+/install
+/log
+
 /src/build
 /src/install
 /src/log
