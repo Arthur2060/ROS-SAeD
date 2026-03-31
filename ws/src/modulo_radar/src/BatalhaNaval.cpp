@@ -13,12 +13,9 @@ using std::placeholders::_1;
 class BatalhaNaval : public rclcpp::Node
 {
 public:
-  BatalhaNaval()
-  : Node("batalha_naval")
-  {
-	double anguloEmRadi(float angle) {
+	auto anguloEmRadi = [](float angle) {
 		return angle * (M_PI / 180.0);
-	}
+	};
 
 	double calcularX(float distance, float angle) {
 		return sin(anguloEmRadi(angle)) * distance;
@@ -28,6 +25,9 @@ public:
 		return cos(anguloEmRadi(angle)) * distance;
 	}
 
+  BatalhaNaval()
+  : Node("batalha_naval")
+  {
     auto topic_callback = [this](const saed_interfaces::msg::Radar & msg){
 		float distance = msg.distance;
 		float angle = msg.angle;
