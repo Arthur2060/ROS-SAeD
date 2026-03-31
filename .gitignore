@@ -1,1 +1,13 @@
 .vscode/*
+
+/build
+/install
+/log
+
+ws/src/build
+ws/src/install
+ws/src/log
+
+ws/src/*/build
+ws/src/*/install
+ws/src/*/log
