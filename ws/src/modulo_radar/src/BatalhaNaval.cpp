@@ -44,10 +44,3 @@ public:
 private:
   rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
 };
-
-int main(int argc, char * argv[]) {
-	rclcpp::init(argc, argv);
-  	rclcpp::spin(std::make_shared<BatalhaNaval>());
-  	rclcpp::shutdown();
-	return 0;
-}
