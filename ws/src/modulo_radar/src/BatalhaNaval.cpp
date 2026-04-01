@@ -13,18 +13,6 @@ using std::placeholders::_1;
 class BatalhaNaval : public rclcpp::Node
 {
 public:
-	auto anguloEmRadi = [](float angle) {
-		return angle * (M_PI / 180.0);
-	};
-
-	double calcularX(float distance, float angle) {
-		return sin(anguloEmRadi(angle)) * distance;
-	}
-
-	double calcularY(float distance, float angle) {
-		return cos(anguloEmRadi(angle)) * distance;
-	}
-
   BatalhaNaval()
   : Node("batalha_naval")
   {
@@ -42,5 +30,17 @@ public:
   }
 
 private:
-  rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
+  	auto anguloEmRadi = [](float angle) {
+		return angle * (M_PI / 180.0);
+	};
+
+	auto calcularX = [](float distance, float angle) {
+		return sin(anguloEmRadi(angle)) * distance;
+	};
+
+	auto calcularY = [](float distance, float angle) {
+		return cos(anguloEmRadi(angle)) * distance;
+	};
+
+  	rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
 };
