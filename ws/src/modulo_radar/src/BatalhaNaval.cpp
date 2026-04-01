@@ -30,17 +30,17 @@ public:
   }
 
 private:
-  	auto anguloEmRadi = [](float angle) {
+	double anguloEmRadi(float angle) {
 		return angle * (M_PI / 180.0);
 	};
 
-	auto calcularX = [](float distance, float angle) {
+	double calcularX(float distance, float angle) {
 		return sin(anguloEmRadi(angle)) * distance;
-	};
+	}
 
-	auto calcularY = [](float distance, float angle) {
+	double calcularY(float distance, float angle) {
 		return cos(anguloEmRadi(angle)) * distance;
-	};
+	}
 
   	rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
 };

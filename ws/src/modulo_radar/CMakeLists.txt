@@ -8,7 +8,7 @@ find_package(saed_interfaces REQUIRED)
 
 # Declaracao de executaveis (Segunda linha para especificar dependencias)
 add_executable(modulo_radar src/Main.cpp)
-ament_target_dependencies(modulo_radar batalha_naval rclcpp saed_interfaces)
+ament_target_dependencies(modulo_radar rclcpp saed_interfaces)
 
 # Instalacao das dependencias
 install(TARGETS
