@@ -15,11 +15,11 @@ int main(int argc, char * argv[]) {
 	CalculoDePonto calc;
     auto radarSubscriber = std::make_shared<RadarSubscriber>();
 
-	distance = radarSubscriber.getDistance();
-	angle = radarSubscriber.getAngle();
+	double distance = radarSubscriber.get()->getDistance();
+	double angle = radarSubscriber.get()->getAngle();
 
-	X = calc.calcularDistanciaX(distance, angle);
-	Y = calc.calcularDistanciaY(distance, angle);
+	double X = calc.calcularDistanciaX(distance, angle);
+	double Y = calc.calcularDistanciaY(distance, angle);
 
 	rclcpp::spin(radarSubscriber);
 	rclcpp::shutdown();

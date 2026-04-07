@@ -1,6 +1,12 @@
 #include <cmath>
 
-class CalculoDePonto() {
+class CalculoDePonto {
+        
+    private:
+        double anguloEmRad(double angle) {
+            return angle * (3.14 / 180);
+        };
+
     public:
         CalculoDePonto(){}
 
@@ -11,9 +17,4 @@ class CalculoDePonto() {
         double calcularDistanciaX(double distance, double angle){
             return sin(anguloEmRad(angle)) * distance;
         }
-        
-    private:
-        auto anguloEmRad = [](double angle) {
-            return angle * (3.14 / 180);
-        }
-}
+};

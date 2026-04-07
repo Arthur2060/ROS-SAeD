@@ -10,33 +10,32 @@ using std::placeholders::_1;
 
 class RadarSubscriber : public rclcpp::Node
 {
-public:
+  private:
+    rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
 
-  double last_distance;
-  double last_angle;
+  public:
 
-  RadarSubscriber()
-  : Node("radar_subscriber")
-  {
-	  auto topic_callback = [this](const saed_interfaces::msg::Radar &msg)
-	  {
-		  last_distance = msg.distance;
-		  last_angle = msg.angle;
-	  };
+    double last_distance;
+    double last_angle;
 
-	  subscription_ = this->create_subscription<saed_interfaces::msg::Radar>(
-		  "topic", 10, topic_callback);
-  }
+    RadarSubscriber()
+    : Node("radar_subscriber")
+    {
+      auto topic_callback = [this](const saed_interfaces::msg::Radar &msg)
+      {
+        last_distance = msg.distance;
+        last_angle = msg.angle;
+      };
 
-  double getDistance() {
-	return last_distance;
-  }
+      subscription_ = this->create_subscription<saed_interfaces::msg::Radar>(
+        "topic", 10, topic_callback);
+    }
 
-  double getAngle() {
-	return last_angle;
-  }
+    double getDistance() {
+      return last_distance;
+    }
 
-private:
-
-  	rclcpp::Subscription<saed_interfaces::msg::Radar>::SharedPtr subscription_;
+    double getAngle() {
+      return last_angle;
+    }
 };
