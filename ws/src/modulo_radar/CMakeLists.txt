@@ -7,7 +7,7 @@ find_package(rclcpp REQUIRED)
 find_package(saed_interfaces REQUIRED)
 
 # Declaracao de executaveis (Segunda linha para especificar dependencias)
-add_executable(modulo_radar src/Main.cpp src/CalculoDePonto.cpp src/RadarSubscriber.cpp)
+add_executable(modulo_radar src/Main.cpp src/CalculoDePonto.cpp)
 ament_target_dependencies(modulo_radar rclcpp saed_interfaces)
 
 # Instalacao das dependencias
