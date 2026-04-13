@@ -17,14 +17,24 @@ class RadarPublisherTest : public rclcpp::Node {
             {
                 auto message = saed_interfaces::msg::Radar();
 
-                std::random_device rd;
-                std::mt19937 gen(rd());
-                std::uniform_int_distribution<> dist(0, 360);
+                message.distance = 2;
+                message.angle = 90.0;
 
-                message.distance = dist(gen);
-                message.angle = dist(gen);
+                RCLCPP_INFO(this->get_logger(), "Publicando: %.2fm, %.2f Graus", message.distance, message.angle);
 
-                RCLCPP_INFO(this->get_logger(), "Publicando: ", std::to_string(message.distance), ", ", std::to_string(message.angle));
+                this->publisher_->publish(message);
+
+                message.distance = 1;
+                message.angle = 45.0;
+
+                RCLCPP_INFO(this->get_logger(), "Publicando: %.2fm, %.2f Graus", message.distance, message.angle);
+
+                this->publisher_->publish(message);
+
+                message.distance = 2.5;
+                message.angle = 65.0;
+
+                RCLCPP_INFO(this->get_logger(), "Publicando: %.2fm, %.2f Graus", message.distance, message.angle);
 
                 this->publisher_->publish(message);
             };
