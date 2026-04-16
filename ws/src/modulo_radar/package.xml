@@ -6,6 +6,8 @@
   <description>Determina a localização de obstaculos com base nas informações postadas no tópico radar</description>
   <maintainer email="arthurhenrrique1705@gmail.com">arthur</maintainer>
   <license>Apache-2.0</license>
+  
+  <exec_depend>saed_ros_launch</exec_depend>
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
