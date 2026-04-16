@@ -10,9 +10,10 @@ class MapManager
 {
 private:
     cell map[10][10] = {};
+    float CELL_DISTANCE;
 
 public:
-    MapManager()
+    MapManager(int distancia)
     {
         for (int x = 0; x <= sizeof(map); x++)
         {
@@ -24,18 +25,24 @@ public:
                 cell.y = y;
                 cell.value = false;
 
-                map[x][y] = cell;
+                this->map[x][y] = cell;
             }
         }
+
+        this->CELL_DISTANCE = distancia;
     }
 
     bool addObstacle(int x, int y)
     {
         if (!map[x][y].value)
         {
-            map[x][y].value = !map[x][y].value;
+            this->map[x][y].value = !map[x][y].value;
             return true;
         }
         return false;
+    }
+
+    float getDistanciaDeQuadro() {
+        return this->CELL_DISTANCE;
     }
 };
