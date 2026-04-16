@@ -35,5 +35,5 @@ EXPOSE 9090
 CMD ["/bin/bash", "-c", \
   "source /opt/ros/jazzy/setup.bash && \
    source /ros2_ws/install/setup.bash && \
-   ros2 launch saed_ros saed_ros_launch.py & \
+   ros2 launch saed_ros saed_ros_launch.xml & \
    ros2 launch rosbridge_server rosbridge_websocket_launch.xml"]
