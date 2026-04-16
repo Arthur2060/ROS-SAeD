@@ -5,7 +5,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "saed_interfaces/msg/radar.hpp"
-#include "CalculoDePonto.hpp"
+#include "CalculoDePonto.h"
 
 CalculoDePonto calc;
 const float DISTANCIA_DE_QUADRO = 0.3;

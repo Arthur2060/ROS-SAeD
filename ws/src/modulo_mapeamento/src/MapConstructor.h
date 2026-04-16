@@ -1,0 +1,6 @@
+
+class MapConstructor {
+    public:
+
+    private:
+};
