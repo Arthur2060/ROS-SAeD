@@ -1,6 +1,0 @@
-
-class MapConstructor {
-    public:
-
-    private:
-};
