@@ -1,10 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>modulo_radar</name>
+  <name>radar_package</name>
   <version>0.0.1</version>
-  <description>Determina a localização de obstaculos com base nas informações postadas no tópico radar</description>
-  <maintainer email="arthurhenrrique1705@gmail.com">arthur</maintainer>
+  <description>
+    Determina a localização de obstaculos 
+    com base nas informações postadas no
+     tópico radar
+  </description>
+  <maintainer email="arthurhenrrique1705@gmail.com">Arthur H.</maintainer>
   <license>Apache-2.0</license>
   
   <exec_depend>saed_ros_launch</exec_depend>

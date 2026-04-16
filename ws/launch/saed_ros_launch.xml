@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <node pkg='modulo_radar' exec='modulo_radar'>
+    <node pkg='radar_package' exec='radar'>
+    <node pkg='map_package' exec='map'>
 </launch>
