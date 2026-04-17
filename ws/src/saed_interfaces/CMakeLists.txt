@@ -10,7 +10,8 @@ set(msg_files
 )
 
 set(srv_files
-  "srv/getMap.srv"
+  "srv/GetMapCell.srv"
+  "srv/GetCellScale.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
