@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(modulo_mapeamento)
+project(map_package)
 
 # Declaracao de dependencias
 find_package(ament_cmake REQUIRED)
