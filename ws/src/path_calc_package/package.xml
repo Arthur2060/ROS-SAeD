@@ -3,7 +3,11 @@
 <package format="3">
   <name>path_calc_package</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>
+    Este package e responsavel por criar rotas
+  e guardar informacoes a respeito da localizacao
+  do robo no mapa e espaco em geral
+  </description>
   <maintainer email="arthurhenrrique1705@gmail.com">Arthur H.</maintainer>
   <license>Apache-2.0</license>
   
@@ -11,6 +15,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
+  <depend>map_package</depend>
   <depend>saed_interfaces</depend>
   
   <test_depend>ament_lint_auto</test_depend>
