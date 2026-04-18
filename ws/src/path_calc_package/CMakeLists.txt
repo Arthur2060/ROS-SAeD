@@ -3,11 +3,12 @@ project(path_calc_package)
 # Declaracao de dependencias
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 find_package(saed_interfaces REQUIRED)
 
 # Declaracao de executaveis (Segunda linha para especificar dependencias)
 add_executable(path_calc src/PathCalc.cpp)
-ament_target_dependencies(path_calc rclcpp saed_interfaces)
+ament_target_dependencies(path_calc rclcpp saed_interfaces std_msgs)
 
 # Instalacao das dependencias
 install(TARGETS
